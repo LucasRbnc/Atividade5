@@ -1,25 +1,24 @@
-import mongoose, { ObjectId,Schema, Types } from "mongoose";
-import Category from "./category";
+import mongoose, { ObjectId, Schema, Types } from "mongoose";
+import Category from "./Category";
 
-
-const productsSchema = new Schema({
+const ProductsSchema = new Schema({
     name:{
-        type: String,
+        type:String,
         trim: true,
-        lowercase: true,
+        lowercase:true,
         unique: true,
         required: [true, "O nome é obrigatório"]
     },
-    idcategory:{
+    idcategory: {
         type: Types.ObjectId,
         ref: Category,
         required: [true, "A categoria é obrigatória"],
-        validate: {
-            validator: async function(_id:ObjectId){
+        validate:{
+            validator: async function(_id:ObjectId) {
                 const document = await mongoose.models.Category.findById(_id);
                 return !!document;
             },
-            message: "A categoria não existe no cadastro"
+            message:"A categoria não existe no cadastro"
         }
     }
 },{
@@ -28,10 +27,10 @@ const productsSchema = new Schema({
             ret.id = ret._id;
             delete ret._id;
             delete ret.__v;
-        }
     }
-})
+}
+});
 
-const Product = mongoose.model("Products", productsSchema, "products");
+const ProductsModel = mongoose.model("Products", ProductsSchema, "products")
 
-export default Product;
+export default ProductsModel

@@ -1,10 +1,15 @@
 import { Router } from "express";
 import category from "./category"
-import product from "./product";
+import products from "./products"
+import user from "./user"
+import spents from "./spents"
+import { validadeAcess } from "../middlewares/Auth";
 
-const router = Router();
+const routes = Router()
 
-router.use("/categoria", category);
-router.use("/produto", product);
+routes.use("/usuario", user);
+routes.use("/categoria", validadeAcess, category);
+routes.use("/produto", validadeAcess, products);
+routes.use("/gasto", validadeAcess, spents);
 
-export default router;
+export default routes

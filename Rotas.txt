@@ -1,0 +1,24 @@
+cadastro e login:
+{
+  "mail": "lucas@hotmail.com",
+  "status": "adm",
+  "password": "123"
+}
+
+cadastro de categoria:
+{
+  "name": "esporte" 
+}
+
+cadastro de produto:
+{
+  "name": "bola",
+  "idcategory": ""
+}
+
+cadastro de gasto:
+{
+  "iduser": "",
+  "idproduct": "",
+  "value": "500"
+}
